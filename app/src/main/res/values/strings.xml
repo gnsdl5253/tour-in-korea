@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">tourinkorea</string>
+    <string name="home">Home</string>
+    <string name="map">Map</string>
+    <string name="location">지역</string>
+    <string name="gyeonggi">서울/인천/경기</string>
+    <string name="chungcheong">대전/충청</string>
+    <string name="gyeongsang">부산/울산/경상</string>
+    <string name="jeolla">광주/전라</string>
+    <string name="gangwon">강원</string>
+    <string name="jeju">제주</string>
+    <string name="bookmarks">Bookmarks</string>
 </resources>
