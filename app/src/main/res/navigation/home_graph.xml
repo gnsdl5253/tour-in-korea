@@ -20,4 +20,18 @@
         android:name="com.hoon.tourinkorea.ui.bookmark.BookmarkFragment"
         android:label="bookmarks"
         tools:layout="@layout/fragment_bookmark" />
+    <activity
+        android:id="@+id/detailActivity"
+        android:name="com.hoon.tourinkorea.ui.detail.DetailActivity"
+        android:label="activity_detail"
+        tools:layout="@layout/activity_detail">
+        <argument
+            android:name="post"
+            app:argType="com.hoon.tourinkorea.data.post.Post" />
+    </activity>
+
+    <action
+        android:id="@+id/action_global_detail"
+        app:destination="@+id/detailActivity" />
+
 </navigation>
