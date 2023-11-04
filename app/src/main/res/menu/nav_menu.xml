@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/gyeonggi"
+            android:title="@string/gyeonggi" />
+        <item
+            android:id="@+id/chungcheong"
+            android:title="@string/chungcheong" />
+        <item
+            android:id="@+id/gyeongsang"
+            android:title="@string/gyeongsang" />
+        <item
+            android:id="@+id/jeolla"
+            android:title="@string/jeolla" />
+        <item
+            android:id="@+id/gangwon"
+            android:title="@string/gangwon" />
+        <item
+            android:id="@+id/jeju"
+            android:title="@string/jeju" />
+    </group>
+</menu>
