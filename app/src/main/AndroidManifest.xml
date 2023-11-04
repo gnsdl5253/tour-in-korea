@@ -17,9 +17,10 @@
         android:theme="@style/Theme.Tourinkorea"
         android:usesCleartextTraffic="true"
         tools:targetApi="34">
-
         <activity
-            android:name=".ui.write.WriteActivity"/>
+            android:name=".ui.detail.DetailActivity"
+            android:exported="false" />
+        <activity android:name=".ui.write.WriteActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
