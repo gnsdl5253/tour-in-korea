@@ -10,4 +10,8 @@
     <string name="gangwon">강원</string>
     <string name="jeju">제주</string>
     <string name="bookmarks">Bookmarks</string>
+    <string name="title">제목</string>
+    <string name="description">내용</string>
+    <string name="write_complete">작성</string>
+    <string name="img_count">%1d/10</string>
 </resources>

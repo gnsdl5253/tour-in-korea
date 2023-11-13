@@ -1,11 +1,15 @@
 package com.hoon.tourinkorea
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.hoon.tourinkorea.databinding.ActivityMainBinding
+import com.hoon.tourinkorea.ui.write.WriteActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -24,6 +28,11 @@ class MainActivity : AppCompatActivity() {
 
         binding.toolbarHome.setNavigationOnClickListener {
             binding.drawerLayout.openDrawer(binding.navigationView)
+        }
+
+        binding.writeButton.setOnClickListener {
+            val intent = Intent(this, WriteActivity::class.java)
+            startActivity(intent)
         }
     }
 }
