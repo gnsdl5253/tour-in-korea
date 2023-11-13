@@ -14,6 +14,18 @@ class PostRemoteDataSource @Inject constructor(private val apiClient: ApiClient)
         return apiClient.getPosts(auth).body()?.values?.toList()
     }
 
+    override suspend fun createPost(auth: String, post: Post) {
+         apiClient.createPost(
+            auth, Post(
+                post.title,
+                post.location,
+                post.description,
+                post.storageUriList,
+                post.publishedAt,
+            )
+        )
+    }
+
     override suspend fun uploadImage(imageList: List<Uri>): List<String> {
 
         val storageRef = FirebaseStorage.getInstance().reference
@@ -23,9 +35,5 @@ class PostRemoteDataSource @Inject constructor(private val apiClient: ApiClient)
             imageRef.putFile(uri).await()
             location
         }
-    }
-
-    suspend fun createPost(auth: String, post: Post){
-        apiClient.createPost(auth, post)
     }
 }
