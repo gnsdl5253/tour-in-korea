@@ -1,7 +1,11 @@
-package com.hoon.tourinkorea
+package com.hoon.tourinkorea.di
 
 import com.hoon.tourinkorea.BuildConfig
+import com.hoon.tourinkorea.data.post.PostDataSource
+import com.hoon.tourinkorea.data.post.PostRemoteDataSource
+import com.hoon.tourinkorea.network.ApiCallAdapterFactory
 import com.hoon.tourinkorea.network.ApiClient
+import com.hoon.tourinkorea.ui.map.KakaoApiClient
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -18,6 +22,11 @@ import javax.inject.Singleton
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
 annotation class FireBaseRetrofit
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class KakaoRetrofit
+
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -47,14 +56,41 @@ object NetworkModule {
             .baseUrl(BuildConfig.FIRE_BASE_URL)
             .client(client)
             .addConverterFactory(MoshiConverterFactory.create(moshi))
+            .addCallAdapterFactory(ApiCallAdapterFactory.create())
             .build()
     }
 
+    @KakaoRetrofit
+    @Singleton
+    @Provides
+    fun provideKakaoRetrofit(client: OkHttpClient): Retrofit {
+        val moshi = Moshi.Builder()
+            .add(KotlinJsonAdapterFactory())
+            .build()
+
+        return Retrofit.Builder()
+            .baseUrl(BuildConfig.KAKAO_BASE_URL)
+            .client(client)
+            .addConverterFactory(MoshiConverterFactory.create(moshi))
+            .build()
+    }
 
     @Singleton
     @Provides
     fun provideClient(@FireBaseRetrofit retrofit: Retrofit): ApiClient {
         return retrofit.create(ApiClient::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideKakaoClient(@KakaoRetrofit retrofit: Retrofit): KakaoApiClient {
+        return retrofit.create(KakaoApiClient::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun providePostDataSource(apiClient: ApiClient): PostDataSource {
+        return PostRemoteDataSource(apiClient)
     }
 
 }
