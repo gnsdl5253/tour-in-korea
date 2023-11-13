@@ -8,6 +8,7 @@ plugins {
     id("kotlin-parcelize")
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+    kotlin("plugin.serialization") version "1.8.21"
 }
 
 val properties = Properties()
@@ -26,6 +27,8 @@ android {
 
         buildConfigField("String", "GOOGLE_CLIENT_ID", properties["google_client_id"] as String)
         buildConfigField("String", "FIRE_BASE_URL", properties["fire_base_url"] as String)
+        buildConfigField("String", "KAKAO_BASE_URL", properties["kakao_base_url"] as String)
+        buildConfigField("String", "API_KEY", properties["api_key"] as String)
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -60,10 +63,17 @@ kapt {
 
 dependencies {
 
+    implementation(fileTree(mapOf("include" to listOf("*.jar"), "dir" to "libs")))
+    implementation(files("libs/libDaumMapAndroid.jar"))
+
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.9.10")
+
     implementation("com.google.dagger:hilt-android:2.48.1")
+    implementation("androidx.datastore:datastore-core:1.0.0")
     kapt("com.google.dagger:hilt-android-compiler:2.48.1")
 
-    implementation("androidx.fragment:fragment-ktx:1.6.1")
+    implementation("androidx.fragment:fragment-ktx:1.6.2")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
 
@@ -86,8 +96,8 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.10.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("androidx.navigation:navigation-fragment-ktx:2.7.4")
-    implementation("androidx.navigation:navigation-ui-ktx:2.7.4")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.5")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.5")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
