@@ -14,4 +14,6 @@
     <string name="description">내용</string>
     <string name="write_complete">작성</string>
     <string name="img_count">%1d/10</string>
+    <string name="search_field">장소 입력</string>
+    <string name="search">검색</string>
 </resources>
