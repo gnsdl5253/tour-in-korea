@@ -15,8 +15,8 @@ class PostRemoteDataSource @Inject constructor(private val apiClient: ApiClient)
         return apiClient.getPosts(auth)
     }
 
-    override suspend fun createPost(auth: String, post: Post) {
-        apiClient.createPost(
+    override suspend fun createPost(auth: String, post: Post): ApiResponse<Map<String, String>> {
+        return apiClient.createPost(
             auth, Post(
                 post.title,
                 post.location,

@@ -7,7 +7,7 @@ interface PostDataSource {
 
     suspend fun getPosts(): ApiResponse<Map<String, Post>>
 
-    suspend fun createPost(auth: String, post: Post)
+    suspend fun createPost(auth: String, post: Post): ApiResponse<Map<String,String>>
 
     suspend fun uploadImage(imageList: List<Uri>): List<String>
 }
