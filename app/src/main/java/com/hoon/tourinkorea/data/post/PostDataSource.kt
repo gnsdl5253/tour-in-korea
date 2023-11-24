@@ -1,7 +1,6 @@
-package com.hoon.tourinkorea.data.repository
+package com.hoon.tourinkorea.data.post
 
 import android.net.Uri
-import com.hoon.tourinkorea.data.model.Post
 import com.hoon.tourinkorea.network.ApiResponse
 
 interface PostDataSource {
