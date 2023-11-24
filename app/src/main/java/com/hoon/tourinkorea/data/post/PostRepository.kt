@@ -2,13 +2,14 @@ package com.hoon.tourinkorea.data.post
 
 import android.net.Uri
 import com.google.firebase.auth.FirebaseAuth
+import com.hoon.tourinkorea.network.ApiResponse
 import kotlinx.coroutines.tasks.await
 import java.time.LocalDateTime
 import javax.inject.Inject
 
 class PostRepository @Inject constructor(private val postDataSource: PostDataSource) {
 
-    suspend fun getPosts(): List<Post>? {
+    suspend fun getPosts(): ApiResponse<Map<String, Post>> {
         return postDataSource.getPosts()
     }
 

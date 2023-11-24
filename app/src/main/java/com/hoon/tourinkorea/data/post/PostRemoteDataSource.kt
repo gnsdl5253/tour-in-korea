@@ -4,18 +4,19 @@ import android.net.Uri
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.storage.FirebaseStorage
 import com.hoon.tourinkorea.network.ApiClient
+import com.hoon.tourinkorea.network.ApiResponse
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
 class PostRemoteDataSource @Inject constructor(private val apiClient: ApiClient) : PostDataSource {
 
-    override suspend fun getPosts(): List<Post>? {
+    override suspend fun getPosts(): ApiResponse<Map<String, Post>> {
         val auth = FirebaseAuth.getInstance().currentUser?.getIdToken(true)?.await()?.token
-        return apiClient.getPosts(auth).body()?.values?.toList()
+        return apiClient.getPosts(auth)
     }
 
-    override suspend fun createPost(auth: String, post: Post) {
-         apiClient.createPost(
+    override suspend fun createPost(auth: String, post: Post): ApiResponse<Map<String, String>> {
+        return apiClient.createPost(
             auth, Post(
                 post.title,
                 post.location,
