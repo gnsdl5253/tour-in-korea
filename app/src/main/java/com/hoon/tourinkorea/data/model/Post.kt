@@ -1,4 +1,4 @@
-package com.hoon.tourinkorea.data.post
+package com.hoon.tourinkorea.data.model
 
 import android.os.Parcelable
 import com.squareup.moshi.JsonClass
@@ -12,4 +12,5 @@ data class Post(
     val description: String,
     val storageUriList: List<String>,
     val publishedAt: String,
+    var downloadUrls: List<String> = emptyList()
 ): Parcelable
