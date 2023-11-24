@@ -27,7 +27,7 @@
         tools:layout="@layout/activity_detail">
         <argument
             android:name="post"
-            app:argType="com.hoon.tourinkorea.data.post.Post" />
+            app:argType="com.hoon.tourinkorea.data.model.Post" />
     </activity>
 
     <action

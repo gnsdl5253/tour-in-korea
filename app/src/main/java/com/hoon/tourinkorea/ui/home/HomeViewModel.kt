@@ -6,8 +6,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.storage.FirebaseStorage
-import com.hoon.tourinkorea.data.post.Post
-import com.hoon.tourinkorea.data.post.PostRepository
+import com.hoon.tourinkorea.data.model.Post
+import com.hoon.tourinkorea.data.repository.PostRepository
 import com.hoon.tourinkorea.network.ApiResultSuccess
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch

@@ -1,8 +1,8 @@
 package com.hoon.tourinkorea.di
 
 import com.hoon.tourinkorea.BuildConfig
-import com.hoon.tourinkorea.data.post.PostDataSource
-import com.hoon.tourinkorea.data.post.PostRemoteDataSource
+import com.hoon.tourinkorea.data.repository.PostDataSource
+import com.hoon.tourinkorea.data.repository.PostRemoteDataSource
 import com.hoon.tourinkorea.network.ApiCallAdapterFactory
 import com.hoon.tourinkorea.network.ApiClient
 import com.hoon.tourinkorea.ui.map.KakaoApiClient

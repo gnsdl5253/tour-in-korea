@@ -1,7 +1,8 @@
-package com.hoon.tourinkorea.data.post
+package com.hoon.tourinkorea.data.repository
 
 import android.net.Uri
 import com.google.firebase.auth.FirebaseAuth
+import com.hoon.tourinkorea.data.model.Post
 import com.hoon.tourinkorea.network.ApiResponse
 import kotlinx.coroutines.tasks.await
 import java.time.LocalDateTime

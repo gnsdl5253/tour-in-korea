@@ -1,4 +1,4 @@
-package com.hoon.tourinkorea.data.post
+package com.hoon.tourinkorea.data.model
 
 import android.os.Parcelable
 import com.squareup.moshi.JsonClass
