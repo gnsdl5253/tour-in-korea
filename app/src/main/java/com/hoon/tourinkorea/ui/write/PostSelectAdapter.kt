@@ -11,20 +11,6 @@ class PostSelectAdapter(private val clickListener: (Int) -> Unit) :
 
     private var itemList = listOf<Uri>()
 
-    class SelectedImageViewHolder(
-        private val binding: ItemSelectPhotoBinding,
-        private val clickListener: (Int) -> Unit
-    ) : RecyclerView.ViewHolder(binding.root) {
-
-        fun bind(uri: Uri, position: Int) {
-            binding.ivSelectedImage.setImageURI(uri)
-            binding.btnDeleteImage.setOnClickListener {
-                clickListener.invoke(position)
-            }
-        }
-
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SelectedImageViewHolder {
         val binding =
             ItemSelectPhotoBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -36,12 +22,26 @@ class PostSelectAdapter(private val clickListener: (Int) -> Unit) :
     }
 
     override fun onBindViewHolder(holder: SelectedImageViewHolder, position: Int) {
-        holder.bind(itemList[position],position)
+        if (position < itemList.size) {
+            holder.bind(itemList[position], position)
+        }
     }
 
     fun updateData(uriList: List<Uri>) {
-        val startPosition = itemList.size
         itemList = uriList
-        notifyItemRangeInserted(startPosition, uriList.size)
+        notifyDataSetChanged()
+    }
+
+    class SelectedImageViewHolder(
+        private val binding: ItemSelectPhotoBinding,
+        private val clickListener: (Int) -> Unit
+    ) : RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(uri: Uri, position: Int) {
+            binding.ivSelectedImage.setImageURI(uri)
+            binding.btnDeleteImage.setOnClickListener {
+                clickListener.invoke(position)
+            }
+        }
     }
 }
