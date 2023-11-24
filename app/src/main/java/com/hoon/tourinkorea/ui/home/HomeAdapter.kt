@@ -4,7 +4,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.hoon.tourinkorea.data.model.Post
+import com.hoon.tourinkorea.data.post.Post
 import com.hoon.tourinkorea.databinding.ItemHomeListBinding
 
 class HomeAdapter(private val onItemClick: (Post) -> Unit) :
