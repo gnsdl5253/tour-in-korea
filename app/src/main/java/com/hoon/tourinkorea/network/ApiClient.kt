@@ -1,6 +1,6 @@
 package com.hoon.tourinkorea.network
 
-import com.hoon.tourinkorea.data.post.Post
+import com.hoon.tourinkorea.data.model.Post
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST

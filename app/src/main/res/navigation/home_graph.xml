@@ -21,17 +21,17 @@
         android:label="bookmarks"
         tools:layout="@layout/fragment_bookmark" />
     <activity
-        android:id="@+id/detailActivity"
+        android:id="@+id/dest_detail"
         android:name="com.hoon.tourinkorea.ui.detail.DetailActivity"
         android:label="activity_detail"
         tools:layout="@layout/activity_detail">
         <argument
             android:name="post"
-            app:argType="com.hoon.tourinkorea.data.post.Post" />
+            app:argType="com.hoon.tourinkorea.data.model.Post" />
     </activity>
 
     <action
         android:id="@+id/action_global_detail"
-        app:destination="@+id/detailActivity" />
+        app:destination="@+id/dest_detail" />
 
 </navigation>
