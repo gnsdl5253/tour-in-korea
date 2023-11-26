@@ -12,4 +12,5 @@ data class Post(
     val description: String,
     val storageUriList: List<String>,
     val publishedAt: String,
+    var downloadUrls: List<String> = emptyList()
 ): Parcelable
