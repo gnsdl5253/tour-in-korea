@@ -1,5 +1,6 @@
 package com.hoon.tourinkorea.ui.detail
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -10,6 +11,7 @@ import com.hoon.tourinkorea.data.model.Post
 import com.hoon.tourinkorea.data.source.AppDatabase
 import com.hoon.tourinkorea.databinding.ActivityDetailBinding
 import com.hoon.tourinkorea.ui.bookmark.BookmarkPostDao
+import com.hoon.tourinkorea.ui.download.DownloadActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -38,6 +40,10 @@ class DetailActivity : AppCompatActivity() {
             onBookmarkButtonClick()
         }
 
+        binding.tvDetailLocation.setOnClickListener {
+
+        }
+
         binding.toolBarWrite.setNavigationOnClickListener {
             finish()
         }
@@ -46,11 +52,19 @@ class DetailActivity : AppCompatActivity() {
 
     private fun setLayout() {
         val post = args.post
-        val adapter = DetailImageAdapter(post.storageUriList)
-
+        val adapter = DetailImageAdapter(post.storageUriList) { imageUrls, position ->
+            navigateToDownloadActivity(imageUrls, position)
+        }
         binding.post = post
         binding.viewPager.adapter = adapter
 
+    }
+
+    private fun navigateToDownloadActivity(imageUrls: List<String>, position: Int) {
+        val intent = Intent(this, DownloadActivity::class.java)
+        intent.putStringArrayListExtra("imageUrls", ArrayList(imageUrls))
+        intent.putExtra("position", position)
+        startActivity(intent)
     }
 
     private fun setupDatabase() {
@@ -82,9 +96,9 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private suspend fun unBookmarkArticle() {
-        val title = post.title
+        val hashCode = post.hashCode().toString()
         val bookmarkedArticle = withContext(Dispatchers.IO) {
-            bookmarkPostDao.getAll().find { it.post.title == title }
+            bookmarkPostDao.getAll().find { it.post.hashCode().toString() == hashCode }
         }
 
         bookmarkedArticle?.let {
@@ -96,11 +110,11 @@ class DetailActivity : AppCompatActivity() {
 
     private fun checkBookmarkStatus() {
         lifecycleScope.launch {
-            val title = post.title
+            val hashCode = post.hashCode().toString()
             val savedArticles = withContext(Dispatchers.IO) {
                 bookmarkPostDao.getAll()
             }
-            isBookmarked = savedArticles.any { it.post.title == title }
+            isBookmarked = savedArticles.any { it.post.hashCode().toString() == hashCode }
             updateBookmarkButtonIcon()
         }
     }
