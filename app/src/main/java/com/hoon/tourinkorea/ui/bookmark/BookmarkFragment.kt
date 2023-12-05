@@ -7,12 +7,16 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import com.hoon.tourinkorea.HomeGraphDirections
+import com.hoon.tourinkorea.data.model.Post
 import com.hoon.tourinkorea.databinding.FragmentBookmarkBinding
+import com.hoon.tourinkorea.ui.ItemClickListener
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class BookmarkFragment : Fragment() {
+class BookmarkFragment : Fragment(), ItemClickListener {
 
     private var _binding: FragmentBookmarkBinding? = null
     private val binding get() = _binding!!
@@ -29,16 +33,23 @@ class BookmarkFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setLayout()
+    }
 
-        adapter = BookmarkAdapter()
+    private fun setLayout() {
+        adapter = BookmarkAdapter(this)
         binding.rvBookmarkList.adapter = adapter
 
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.items.collect { bookmarks ->
-                adapter.submitList(bookmarks)
+            viewModel.items.collect { post ->
+                adapter.submitList(post)
             }
         }
-
         viewModel.loadArticle()
+    }
+
+    override fun onItemClick(post: Post) {
+        val action = HomeGraphDirections.actionGlobalDetail(post)
+        findNavController().navigate(action)
     }
 }
