@@ -8,8 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.hoon.tourinkorea.data.model.BookmarkEntity
 import com.hoon.tourinkorea.databinding.ItemBookmarkListBinding
+import com.hoon.tourinkorea.ui.ItemClickListener
 
-class BookmarkAdapter :
+class BookmarkAdapter(private val itemClickListener: ItemClickListener) :
     ListAdapter<BookmarkEntity, BookmarkAdapter.BookmarkViewHolder>(BookmarkDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookmarkViewHolder {
@@ -32,9 +33,12 @@ class BookmarkAdapter :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(bookmark: BookmarkEntity) {
-            binding.tvBookmarkTitle.text = bookmark.post.title
-            binding.tvBookmarkLocal.text = bookmark.post.location
+            binding.post = bookmark.post
             binding.ivBookmarkPhoto.load(bookmark.post.storageUriList.firstOrNull())
+
+            itemView.setOnClickListener {
+                itemClickListener.onItemClick(bookmark.post)
+            }
         }
     }
 
