@@ -1,6 +1,8 @@
 package com.hoon.tourinkorea.di
 
 import com.hoon.tourinkorea.BuildConfig
+import com.hoon.tourinkorea.data.repository.MapDataSource
+import com.hoon.tourinkorea.data.repository.MapRemoteDataSource
 import com.hoon.tourinkorea.data.repository.PostDataSource
 import com.hoon.tourinkorea.data.repository.PostRemoteDataSource
 import com.hoon.tourinkorea.network.ApiCallAdapterFactory
@@ -12,6 +14,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -38,9 +41,16 @@ object NetworkModule {
         val logger = HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BASIC
         }
+        val header = Interceptor { chain ->
+            val newRequest = chain.request().newBuilder()
+                .addHeader("X-Api-Key", BuildConfig.API_KEY)
+                .build()
+            chain.proceed(newRequest)
+        }
 
         return OkHttpClient.Builder()
             .addInterceptor(logger)
+            .addInterceptor(header)
             .build()
     }
 
@@ -72,6 +82,7 @@ object NetworkModule {
             .baseUrl(BuildConfig.KAKAO_BASE_URL)
             .client(client)
             .addConverterFactory(MoshiConverterFactory.create(moshi))
+            .addCallAdapterFactory(ApiCallAdapterFactory.create())
             .build()
     }
 
@@ -87,10 +98,15 @@ object NetworkModule {
         return retrofit.create(KakaoApiClient::class.java)
     }
 
-    @Provides
     @Singleton
+    @Provides
     fun providePostDataSource(apiClient: ApiClient): PostDataSource {
         return PostRemoteDataSource(apiClient)
     }
 
+    @Singleton
+    @Provides
+    fun provideMapDataSource(apiClient: KakaoApiClient): MapDataSource {
+        return MapRemoteDataSource(apiClient)
+    }
 }
