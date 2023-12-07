@@ -24,7 +24,7 @@ class ImageDownloadWorker(
         }
 
         val uri = getFileUri(
-            fileName = "test",
+            fileName = "tour",
             url = imageUrl.split(",")[position],
             context = context
         )
