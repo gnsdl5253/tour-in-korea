@@ -14,7 +14,11 @@
         android:id="@+id/bn_map"
         android:name="com.hoon.tourinkorea.ui.map.MapFragment"
         android:label="map"
-        tools:layout="@layout/fragment_map" />
+        tools:layout="@layout/fragment_map" >
+        <action
+            android:id="@+id/action_bn_map_to_writeActivity"
+            app:destination="@id/write_activity" />
+    </fragment>
     <fragment
         android:id="@+id/bn_bookmarks"
         android:name="com.hoon.tourinkorea.ui.bookmark.BookmarkFragment"
@@ -28,6 +32,14 @@
         <argument
             android:name="post"
             app:argType="com.hoon.tourinkorea.data.model.Post" />
+    </activity>
+
+    <activity
+        android:id="@+id/write_activity"
+        android:name="com.hoon.tourinkorea.ui.write.WriteActivity"
+        android:label="WriteActivity"
+        tools:layout="@layout/activity_write" >
+
     </activity>
 
     <action
