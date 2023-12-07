@@ -7,6 +7,7 @@ plugins {
     id("androidx.navigation.safeargs.kotlin")
     id("kotlin-parcelize")
     id("kotlin-kapt")
+    id("com.google.firebase.crashlytics")
     id("com.google.dagger.hilt.android")
     kotlin("plugin.serialization") version "1.8.21"
 }
@@ -71,10 +72,12 @@ dependencies {
 
     implementation("com.google.dagger:hilt-android:2.48.1")
     implementation("androidx.datastore:datastore-core:1.0.0")
-    implementation("androidx.room:room-common:2.6.0")
-    implementation("androidx.room:room-ktx:2.6.0")
-    implementation("androidx.room:room-runtime:2.6.0")
-    kapt("androidx.room:room-compiler:2.6.0")
+    implementation("androidx.room:room-common:2.6.1")
+    implementation("androidx.room:room-ktx:2.6.1")
+    implementation("androidx.room:room-runtime:2.6.1")
+    implementation("com.google.android.gms:play-services-auth:20.7.0")
+    implementation("androidx.work:work-runtime-ktx:2.9.0")
+    kapt("androidx.room:room-compiler:2.6.1")
     kapt("com.google.dagger:hilt-android-compiler:2.48.1")
 
     implementation("androidx.fragment:fragment-ktx:1.6.2")
@@ -91,6 +94,7 @@ dependencies {
     implementation("androidx.recyclerview:recyclerview:1.3.2")
 
     implementation("com.google.firebase:firebase-analytics-ktx")
+    implementation("com.google.firebase:firebase-crashlytics")
     implementation(platform("com.google.firebase:firebase-bom:32.4.0"))
     implementation("com.google.firebase:firebase-storage-ktx")
     implementation("com.google.firebase:firebase-auth-ktx")
