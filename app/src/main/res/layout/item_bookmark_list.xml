@@ -6,7 +6,7 @@
     <data>
         <variable
             name="clickListener"
-            type="com.hoon.tourinkorea.ui.ItemClickListener" />
+            type="com.hoon.tourinkorea.ItemClickListener" />
 
         <variable
             name="post"
@@ -16,7 +16,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:onClick="@{() -> clickListener.onItemClick(post)">
+        android:onClick="@{(view) -> clickListener.onItemClick(post, view)}">
 
         <ImageView
             android:id="@+id/iv_bookmark_photo"

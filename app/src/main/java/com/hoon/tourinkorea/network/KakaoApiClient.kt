@@ -1,6 +1,6 @@
-package com.hoon.tourinkorea.ui.map
+package com.hoon.tourinkorea.network
 
-import com.hoon.tourinkorea.network.ApiResponse
+import com.hoon.tourinkorea.data.model.ResultSearchKeyword
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Query

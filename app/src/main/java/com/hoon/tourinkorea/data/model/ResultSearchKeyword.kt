@@ -1,4 +1,4 @@
-package com.hoon.tourinkorea.ui.map
+package com.hoon.tourinkorea.data.model
 
 data class ResultSearchKeyword(
     val meta: PlaceMeta, // 장소 메타데이터

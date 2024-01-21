@@ -1,13 +1,13 @@
 package com.hoon.tourinkorea.di
 
 import com.hoon.tourinkorea.BuildConfig
-import com.hoon.tourinkorea.data.repository.MapDataSource
-import com.hoon.tourinkorea.data.repository.MapRemoteDataSource
-import com.hoon.tourinkorea.data.repository.PostDataSource
-import com.hoon.tourinkorea.data.repository.PostRemoteDataSource
+import com.hoon.tourinkorea.data.source.MapDataSource
+import com.hoon.tourinkorea.data.source.MapRemoteDataSource
+import com.hoon.tourinkorea.data.source.PostDataSource
+import com.hoon.tourinkorea.data.source.PostRemoteDataSource
 import com.hoon.tourinkorea.network.ApiCallAdapterFactory
 import com.hoon.tourinkorea.network.ApiClient
-import com.hoon.tourinkorea.ui.map.KakaoApiClient
+import com.hoon.tourinkorea.network.KakaoApiClient
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module

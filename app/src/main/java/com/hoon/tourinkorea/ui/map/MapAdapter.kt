@@ -5,6 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.hoon.tourinkorea.MapItemClickListener
+import com.hoon.tourinkorea.data.model.Place
 import com.hoon.tourinkorea.databinding.ItemMapListBinding
 
 class MapAdapter(

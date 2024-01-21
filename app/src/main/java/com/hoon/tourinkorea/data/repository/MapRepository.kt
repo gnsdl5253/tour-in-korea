@@ -4,7 +4,8 @@ import android.util.Log
 import com.hoon.tourinkorea.network.onError
 import com.hoon.tourinkorea.network.onException
 import com.hoon.tourinkorea.network.onSuccess
-import com.hoon.tourinkorea.ui.map.ResultSearchKeyword
+import com.hoon.tourinkorea.data.model.ResultSearchKeyword
+import com.hoon.tourinkorea.data.source.MapDataSource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.onCompletion

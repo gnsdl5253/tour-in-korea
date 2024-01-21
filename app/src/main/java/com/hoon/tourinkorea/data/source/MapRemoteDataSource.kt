@@ -1,14 +1,15 @@
-package com.hoon.tourinkorea.data.repository
+package com.hoon.tourinkorea.data.source
 
 import android.util.Log
 import com.hoon.tourinkorea.BuildConfig
 import com.hoon.tourinkorea.network.ApiResponse
 import com.hoon.tourinkorea.network.ApiResultError
-import com.hoon.tourinkorea.ui.map.KakaoApiClient
-import com.hoon.tourinkorea.ui.map.ResultSearchKeyword
+import com.hoon.tourinkorea.network.KakaoApiClient
+import com.hoon.tourinkorea.data.model.ResultSearchKeyword
 import javax.inject.Inject
 
-class MapRemoteDataSource @Inject constructor(private val apiClient: KakaoApiClient) : MapDataSource {
+class MapRemoteDataSource @Inject constructor(private val apiClient: KakaoApiClient) :
+    MapDataSource {
 
     override suspend fun searchKeyword(keyword: String): ApiResponse<ResultSearchKeyword> {
 
