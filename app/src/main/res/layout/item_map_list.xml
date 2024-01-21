@@ -6,7 +6,7 @@
 
         <variable
             name="place"
-            type="com.hoon.tourinkorea.ui.map.Place" />
+            type="com.hoon.tourinkorea.data.model.Place" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

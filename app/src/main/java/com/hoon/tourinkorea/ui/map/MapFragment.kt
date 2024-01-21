@@ -15,7 +15,11 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.hoon.tourinkorea.MapItemClickListener
+import com.hoon.tourinkorea.data.model.Place
+import com.hoon.tourinkorea.data.model.ResultSearchKeyword
 import com.hoon.tourinkorea.databinding.FragmentMapBinding
+import com.hoon.tourinkorea.network.KakaoApiClient
 import com.hoon.tourinkorea.ui.write.WriteActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch

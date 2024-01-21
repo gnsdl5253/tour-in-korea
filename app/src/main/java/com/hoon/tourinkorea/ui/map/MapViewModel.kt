@@ -3,6 +3,7 @@ package com.hoon.tourinkorea.ui.map
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.hoon.tourinkorea.data.model.ResultSearchKeyword
 import com.hoon.tourinkorea.data.repository.MapRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job

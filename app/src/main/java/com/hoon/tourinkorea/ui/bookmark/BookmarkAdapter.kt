@@ -6,9 +6,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.hoon.tourinkorea.ItemClickListener
 import com.hoon.tourinkorea.data.model.BookmarkEntity
 import com.hoon.tourinkorea.databinding.ItemBookmarkListBinding
-import com.hoon.tourinkorea.ui.ItemClickListener
 
 class BookmarkAdapter(private val itemClickListener: ItemClickListener) :
     ListAdapter<BookmarkEntity, BookmarkAdapter.BookmarkViewHolder>(BookmarkDiffCallback()) {
@@ -37,7 +37,7 @@ class BookmarkAdapter(private val itemClickListener: ItemClickListener) :
             binding.ivBookmarkPhoto.load(bookmark.post.storageUriList.firstOrNull())
 
             itemView.setOnClickListener {
-                itemClickListener.onItemClick(bookmark.post)
+                itemClickListener.onItemClick(bookmark.post, itemView)
             }
         }
     }

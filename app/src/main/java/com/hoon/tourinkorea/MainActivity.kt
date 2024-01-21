@@ -1,8 +1,8 @@
 package com.hoon.tourinkorea
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.hoon.tourinkorea.databinding.ActivityMainBinding
@@ -26,9 +26,9 @@ class MainActivity : AppCompatActivity() {
             binding.bottomNav.setupWithNavController(it)
         }
 
-        binding.toolbarHome.setNavigationOnClickListener {
-            binding.drawerLayout.openDrawer(binding.navigationView)
-        }
+//        binding.toolbarHome.setNavigationOnClickListener {
+//            binding.drawerLayout.openDrawer(binding.navigationView)
+//        }
 
         binding.writeButton.setOnClickListener {
             val intent = Intent(this, WriteActivity::class.java)

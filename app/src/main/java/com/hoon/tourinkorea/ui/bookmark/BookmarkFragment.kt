@@ -9,9 +9,9 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.hoon.tourinkorea.HomeGraphDirections
+import com.hoon.tourinkorea.ItemClickListener
 import com.hoon.tourinkorea.data.model.Post
 import com.hoon.tourinkorea.databinding.FragmentBookmarkBinding
-import com.hoon.tourinkorea.ui.ItemClickListener
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -48,7 +48,7 @@ class BookmarkFragment : Fragment(), ItemClickListener {
         viewModel.loadArticle()
     }
 
-    override fun onItemClick(post: Post) {
+    override fun onItemClick(post: Post, view: View) {
         val action = HomeGraphDirections.actionGlobalDetail(post)
         findNavController().navigate(action)
     }
